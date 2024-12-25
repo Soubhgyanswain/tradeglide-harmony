@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
+import { useNavigate } from "react-router-dom"
 
 const SignUpDialog = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +23,7 @@ const SignUpDialog = () => {
     confirmPassword: "",
   })
   const { toast } = useToast()
+  const navigate = useNavigate()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -40,6 +42,9 @@ const SignUpDialog = () => {
       title: "Account created successfully!",
       description: "Welcome to AlgoTrade",
     })
+
+    // Navigate to dashboard after successful signup
+    navigate("/dashboard")
   }
 
   return (
