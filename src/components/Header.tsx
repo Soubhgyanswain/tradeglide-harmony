@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import SignUpDialog from './SignUpDialog';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,11 +20,12 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-4">
             <a href="#" className="text-gray-300 hover:text-white transition-colors">Home</a>
             <a href="#" className="text-gray-300 hover:text-white transition-colors">Features</a>
             <a href="#" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
             <a href="#" className="text-gray-300 hover:text-white transition-colors">Learn</a>
+            <SignUpDialog />
             <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
               Sign In
             </Button>
@@ -45,9 +47,12 @@ const Header = () => {
             <a href="#" className="block text-gray-300 hover:text-white transition-colors">Features</a>
             <a href="#" className="block text-gray-300 hover:text-white transition-colors">Pricing</a>
             <a href="#" className="block text-gray-300 hover:text-white transition-colors">Learn</a>
-            <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
-              Sign In
-            </Button>
+            <div className="space-y-2">
+              <SignUpDialog />
+              <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
+                Sign In
+              </Button>
+            </div>
           </nav>
         )}
       </div>
