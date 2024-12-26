@@ -7,7 +7,15 @@ import {
   Bell,
   Sun,
   Globe,
-  LogOut
+  LogOut,
+  User,
+  Lock,
+  Mail,
+  Phone,
+  Shield,
+  Key,
+  Image,
+  MapPin
 } from "lucide-react"
 import {
   DropdownMenu,
@@ -15,6 +23,9 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -26,7 +37,6 @@ const ProfileMenu = ({ userInitials = "S" }) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Set initial theme based on system preference or stored preference
     const isDark = document.documentElement.classList.contains('dark')
     setIsDarkTheme(isDark)
   }, [])
@@ -41,7 +51,6 @@ const ProfileMenu = ({ userInitials = "S" }) => {
   }
 
   const handleSignOut = () => {
-    // Add sign out logic here
     navigate("/")
   }
 
@@ -57,10 +66,44 @@ const ProfileMenu = ({ userInitials = "S" }) => {
       <DropdownMenuContent className="w-56 bg-dark-lighter text-white" align="end">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-gray-700" />
-        <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
-          <Settings size={16} />
-          Profile Settings
-        </DropdownMenuItem>
+        
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger className="flex items-center gap-2 cursor-pointer">
+            <Settings size={16} />
+            Profile Settings
+          </DropdownMenuSubTrigger>
+          <DropdownMenuSubContent className="bg-dark-lighter text-white">
+            <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
+              <User size={16} />
+              Edit Personal Info
+            </DropdownMenuItem>
+            <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
+              <Image size={16} />
+              Change Profile Picture
+            </DropdownMenuItem>
+            <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
+              <Mail size={16} />
+              Update Email
+            </DropdownMenuItem>
+            <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
+              <Phone size={16} />
+              Update Phone Number
+            </DropdownMenuItem>
+            <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
+              <Key size={16} />
+              Change Password
+            </DropdownMenuItem>
+            <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
+              <MapPin size={16} />
+              Update Address
+            </DropdownMenuItem>
+            <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
+              <Shield size={16} />
+              Security Settings
+            </DropdownMenuItem>
+          </DropdownMenuSubContent>
+        </DropdownMenuSub>
+
         <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
           <CreditCard size={16} />
           Account and Billing
