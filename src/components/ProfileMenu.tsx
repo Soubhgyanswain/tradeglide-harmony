@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {
   Settings,
   CreditCard,
@@ -24,6 +24,21 @@ import { useNavigate } from "react-router-dom"
 const ProfileMenu = ({ userInitials = "S" }) => {
   const [isDarkTheme, setIsDarkTheme] = useState(true)
   const navigate = useNavigate()
+
+  useEffect(() => {
+    // Set initial theme based on system preference or stored preference
+    const isDark = document.documentElement.classList.contains('dark')
+    setIsDarkTheme(isDark)
+  }, [])
+
+  const handleThemeChange = (checked: boolean) => {
+    setIsDarkTheme(checked)
+    if (checked) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }
 
   const handleSignOut = () => {
     // Add sign out logic here
@@ -75,7 +90,7 @@ const ProfileMenu = ({ userInitials = "S" }) => {
           <Switch
             className="ml-auto"
             checked={isDarkTheme}
-            onCheckedChange={setIsDarkTheme}
+            onCheckedChange={handleThemeChange}
           />
         </DropdownMenuItem>
         <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
