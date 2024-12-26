@@ -78,7 +78,6 @@ const ProfileMenu = ({ userInitials = "S" }) => {
         <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
           <Bell size={16} />
           <span>Notifications</span>
-          <span className="ml-auto bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">11</span>
         </DropdownMenuItem>
         <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
           What's new
