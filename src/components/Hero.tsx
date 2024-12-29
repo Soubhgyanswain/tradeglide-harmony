@@ -40,40 +40,14 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Animated Chart Background */}
-        <div className="mt-16 relative overflow-hidden h-64 rounded-lg bg-dark-lighter/50 p-4">
-          <div className="absolute inset-0 bg-gradient-to-r from-dark-lighter via-transparent to-dark-lighter z-10" />
-          <div className="animate-chart-scroll flex">
-            <svg className="h-full min-w-[100%]" viewBox="0 0 400 100">
-              <path
-                d="M0,50 C50,30 100,70 150,50 C200,30 250,70 300,50 C350,30 400,70 450,50"
-                fill="none"
-                stroke="#8B5CF6"
-                strokeWidth="2"
-              />
-              <path
-                d="M0,70 C50,50 100,90 150,70 C200,50 250,90 300,70 C350,50 400,90 450,70"
-                fill="none"
-                stroke="#D946EF"
-                strokeWidth="2"
-                opacity="0.5"
-              />
-            </svg>
-            <svg className="h-full min-w-[100%]" viewBox="0 0 400 100">
-              <path
-                d="M0,50 C50,30 100,70 150,50 C200,30 250,70 300,50 C350,30 400,70 450,50"
-                fill="none"
-                stroke="#8B5CF6"
-                strokeWidth="2"
-              />
-              <path
-                d="M0,70 C50,50 100,90 150,70 C200,50 250,90 300,70 C350,50 400,90 450,70"
-                fill="none"
-                stroke="#D946EF"
-                strokeWidth="2"
-                opacity="0.5"
-              />
-            </svg>
+        {/* Static Trading Chart Background */}
+        <div className="mt-16 relative h-64">
+          <div className="absolute inset-0 bg-dark-lighter/20 rounded-lg overflow-hidden">
+            <img
+              src="/trading-chart.png"
+              alt="Trading Chart"
+              className="w-full h-full object-cover opacity-30"
+            />
           </div>
         </div>
       </div>
