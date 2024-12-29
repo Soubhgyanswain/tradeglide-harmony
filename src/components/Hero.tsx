@@ -44,7 +44,7 @@ const Hero = () => {
         <div className="mt-16 relative h-64">
           <div className="absolute inset-0 bg-dark-lighter/20 rounded-lg overflow-hidden">
             <img
-              src="/trading-chart.png"
+              src="https://media.istockphoto.com/id/1449224970/photo/abstract-financial-graph-with-up-trend-line-candlestick-chart-in-stock-market-on-neon-light.jpg?s=612x612&w=0&k=20&c=dDz8_AVCWReHLZDv36tVXyylSMdXecj7JjXkiPh6uZc"
               alt="Trading Chart"
               className="w-full h-full object-cover opacity-30"
             />
