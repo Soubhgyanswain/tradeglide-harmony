@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import ProfileMenu from "@/components/ProfileMenu"
-import DepositDialog from "@/components/DepositDialog"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
@@ -87,9 +86,17 @@ const Dashboard = () => {
     <div className="min-h-screen bg-background">
       <header className="border-b">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">AlgoTrade</h1>
+          <div className="flex items-center gap-6">
+            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              AlgoTrade
+            </Link>
+            <nav className="hidden md:flex items-center space-x-4">
+              <Link to="/features" className="text-gray-300 hover:text-white transition-colors">Features</Link>
+              <Link to="/pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</Link>
+              <Link to="/learn" className="text-gray-300 hover:text-white transition-colors">Learn</Link>
+            </nav>
+          </div>
           <div className="flex items-center gap-4">
-            <DepositDialog />
             <ProfileMenu />
           </div>
         </div>
