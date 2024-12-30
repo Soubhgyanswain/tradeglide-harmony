@@ -10,10 +10,15 @@ const Dashboard = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
+    console.log("Checking authentication...")
     const token = localStorage.getItem("token")
-    if (!token) {
+    const userEmail = localStorage.getItem("userEmail")
+    
+    if (!token || !userEmail) {
+      console.log("No token or email found, redirecting to home")
       navigate("/")
     } else {
+      console.log("User authenticated, showing dashboard")
       setIsLoggedIn(true)
     }
   }, [navigate])
