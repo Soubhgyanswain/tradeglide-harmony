@@ -50,7 +50,6 @@ const SignUpDialog = () => {
     // Store user data in localStorage
     localStorage.setItem("userEmail", formData.email)
     localStorage.setItem("userFullName", formData.fullName)
-    localStorage.setItem("token", "dummy-auth-token") // Add this line to set auth token
     setIsRegistered(true)
 
     toast({
@@ -64,14 +63,10 @@ const SignUpDialog = () => {
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Signing in with:", formData.email)
-    
     // Here you would typically validate credentials
+    // For demo purposes, we'll just check if email exists
     const storedEmail = localStorage.getItem("userEmail")
     if (storedEmail === formData.email) {
-      // Set auth token on successful sign in
-      localStorage.setItem("token", "dummy-auth-token")
-      
       toast({
         title: "Signed in successfully!",
         description: "Welcome back to AlgoTrade",

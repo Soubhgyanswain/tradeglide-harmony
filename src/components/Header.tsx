@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import SignUpDialog from './SignUpDialog';
-import DepositDialog from './DepositDialog';
-import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,20 +14,20 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               AlgoTrade
-            </Link>
+            </span>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4">
-            <Link to="/features" className="text-gray-300 hover:text-white transition-colors">Features</Link>
-            <Link to="/pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</Link>
-            <Link to="/learn" className="text-gray-300 hover:text-white transition-colors">Learn</Link>
-            <DepositDialog />
+            <a href="#" className="text-gray-300 hover:text-white transition-colors">Home</a>
+            <a href="#" className="text-gray-300 hover:text-white transition-colors">Features</a>
+            <a href="#" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
+            <a href="#" className="text-gray-300 hover:text-white transition-colors">Learn</a>
             <SignUpDialog />
             <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
-              Sign Up
+              Sign In
             </Button>
           </nav>
 
@@ -45,14 +43,14 @@ const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className="md:hidden py-4 space-y-4">
-            <Link to="/features" className="block text-gray-300 hover:text-white transition-colors">Features</Link>
-            <Link to="/pricing" className="block text-gray-300 hover:text-white transition-colors">Pricing</Link>
-            <Link to="/learn" className="block text-gray-300 hover:text-white transition-colors">Learn</Link>
+            <a href="#" className="block text-gray-300 hover:text-white transition-colors">Home</a>
+            <a href="#" className="block text-gray-300 hover:text-white transition-colors">Features</a>
+            <a href="#" className="block text-gray-300 hover:text-white transition-colors">Pricing</a>
+            <a href="#" className="block text-gray-300 hover:text-white transition-colors">Learn</a>
             <div className="space-y-2">
-              <DepositDialog />
               <SignUpDialog />
               <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
-                Sign Up
+                Sign In
               </Button>
             </div>
           </nav>
