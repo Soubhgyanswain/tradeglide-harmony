@@ -27,7 +27,7 @@ const Header = () => {
             <a href="#" className="text-gray-300 hover:text-white transition-colors">Learn</a>
             <SignUpDialog />
             <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
-              Sign In
+              Sign Up
             </Button>
           </nav>
 
