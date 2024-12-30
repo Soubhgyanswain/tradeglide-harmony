@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import SignUpDialog from './SignUpDialog';
+import DepositDialog from './DepositDialog';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -25,6 +26,7 @@ const Header = () => {
             <Link to="/features" className="text-gray-300 hover:text-white transition-colors">Features</Link>
             <Link to="/pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</Link>
             <Link to="/learn" className="text-gray-300 hover:text-white transition-colors">Learn</Link>
+            <DepositDialog />
             <SignUpDialog />
             <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
               Sign Up
@@ -47,6 +49,7 @@ const Header = () => {
             <Link to="/pricing" className="block text-gray-300 hover:text-white transition-colors">Pricing</Link>
             <Link to="/learn" className="block text-gray-300 hover:text-white transition-colors">Learn</Link>
             <div className="space-y-2">
+              <DepositDialog />
               <SignUpDialog />
               <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
                 Sign Up
