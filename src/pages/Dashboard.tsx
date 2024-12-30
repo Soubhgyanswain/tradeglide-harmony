@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import ProfileMenu from "@/components/ProfileMenu"
+import DepositDialog from "@/components/DepositDialog"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
@@ -88,6 +89,7 @@ const Dashboard = () => {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold">AlgoTrade</h1>
           <div className="flex items-center gap-4">
+            <DepositDialog />
             <ProfileMenu />
           </div>
         </div>
