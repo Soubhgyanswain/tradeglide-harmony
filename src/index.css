@@ -2,64 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --primary: #9b87f5;
-    --primary-dark: #7E69AB;
-    --accent: #6E59A5;
-    --dark: #1A1F2C;
-    --dark-lighter: #2A2F3C;
-}
-
-body {
-    background-color: var(--dark);
-    color: white;
-    font-family: system-ui, -apple-system, sans-serif;
-}
-
-.bg-dark {
-    background-color: var(--dark);
-}
-
-.bg-dark-lighter {
-    background-color: var(--dark-lighter);
-}
-
-.bg-primary {
-    background-color: var(--primary);
-}
-
-.text-primary {
-    color: var(--primary);
-}
-
-.border-primary {
-    border-color: var(--primary);
-}
-
-.from-primary {
-    --tw-gradient-from: var(--primary);
-}
-
-.to-accent {
-    --tw-gradient-to: var(--accent);
-}
-
-/* Animations */
-.transition-colors {
-    transition-property: color, background-color, border-color;
-    transition-duration: 200ms;
-}
-
-.hover\:bg-primary\/90:hover {
-    background-color: rgba(155, 135, 245, 0.9);
-}
-
-/* Modal Animation */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-#signUpModal {
-    animation: fadeIn 0.3s ease-out;
+@layer base {
+  body {
+    @apply bg-dark text-white;
+  }
 }
