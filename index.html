@@ -1,17 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>tradeglide-harmony</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-    <meta property="og:image" content="/og-image.png" />
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlgoTrade - Trading Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <link href="src/index.css" rel="stylesheet">
+    <script src="https://cdn.supabase.com/supabase.js"></script>
+</head>
+<body class="bg-dark text-white">
+    <div id="root">
+        <!-- Header -->
+        <header class="fixed w-full top-0 z-50 bg-dark/95 backdrop-blur-sm border-b border-gray-800">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="/" class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                            AlgoTrade
+                        </a>
+                    </div>
 
-  <body>
-    <div id="root"></div>
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden md:flex items-center space-x-4">
+                        <a href="/features" class="text-gray-300 hover:text-white transition-colors">Features</a>
+                        <a href="/pricing" class="text-gray-300 hover:text-white transition-colors">Pricing</a>
+                        <a href="/learn" class="text-gray-300 hover:text-white transition-colors">Learn</a>
+                        <button id="signUpBtn" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary/90">
+                            Sign Up
+                        </button>
+                    </nav>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-gray-300 hover:text-white" id="mobileMenuBtn">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Navigation -->
+                <nav id="mobileNav" class="hidden md:hidden py-4 space-y-4">
+                    <a href="/features" class="block text-gray-300 hover:text-white transition-colors">Features</a>
+                    <a href="/pricing" class="block text-gray-300 hover:text-white transition-colors">Pricing</a>
+                    <a href="/learn" class="block text-gray-300 hover:text-white transition-colors">Learn</a>
+                    <button class="w-full bg-primary text-white px-4 py-2 rounded hover:bg-primary/90">
+                        Sign Up
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="min-h-screen pt-16 bg-dark relative overflow-hidden">
+            <!-- Video Background -->
+            <div class="absolute inset-0 z-0">
+                <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-30">
+                    <source src="https://videos.pexels.com/video-files/3191576/3191576-uhd_2560_1440_25fps.mp4" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-b from-dark/80 to-dark/95 z-10"></div>
+            </div>
+
+            <div class="container mx-auto px-4 py-20 relative z-20">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                        Automate Your Trading Strategies with Confidence
+                    </h1>
+                    <p class="text-gray-400 text-lg mb-8">
+                        Build, test, and deploy automated trading strategies with our powerful platform.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg flex items-center justify-center">
+                            Get Started
+                            <svg class="ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <button class="border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signUpModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="bg-dark-lighter p-8 rounded-lg max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Create Account</h2>
+                <button id="closeModal" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <form id="signUpForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Full Name</label>
+                    <input type="text" required class="w-full px-4 py-2 rounded bg-dark border border-gray-700 text-white">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Email</label>
+                    <input type="email" required class="w-full px-4 py-2 rounded bg-dark border border-gray-700 text-white">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Password</label>
+                    <input type="password" required class="w-full px-4 py-2 rounded bg-dark border border-gray-700 text-white">
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-2 rounded hover:bg-primary/90">
+                    Create Account
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Supabase client
+        const supabaseUrl = 'https://igwpiwzexabejsdcvpnj.supabase.co';
+        const supabaseKey = 'your-anon-key';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // Modal functionality
+        const signUpBtn = document.getElementById('signUpBtn');
+        const signUpModal = document.getElementById('signUpModal');
+        const closeModal = document.getElementById('closeModal');
+        const signUpForm = document.getElementById('signUpForm');
+
+        signUpBtn.addEventListener('click', () => {
+            signUpModal.classList.remove('hidden');
+        });
+
+        closeModal.addEventListener('click', () => {
+            signUpModal.classList.add('hidden');
+        });
+
+        // Close modal when clicking outside
+        signUpModal.addEventListener('click', (e) => {
+            if (e.target === signUpModal) {
+                signUpModal.classList.add('hidden');
+            }
+        });
+
+        // Handle form submission
+        signUpForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(signUpForm);
+            const email = formData.get('email');
+            const password = formData.get('password');
+
+            try {
+                const { user, error } = await supabase.auth.signUp({
+                    email,
+                    password,
+                });
+
+                if (error) throw error;
+
+                alert('Check your email for the confirmation link!');
+                signUpModal.classList.add('hidden');
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+        // Navigation
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const path = e.target.getAttribute('href');
+                // Handle navigation here
+                console.log('Navigating to:', path);
+            });
+        });
+    </script>
+</body>
 </html>
